@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- slash_screen strings -->
+
+    <string name="app_name">Quran Tutor</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="_9_40_pm_string">9:40 pm</string>
+    <string name="quran_tutor_string">Quran Tutor</string>
+    <string name="quran_tutor_ai">Quran Tutor AI</string>
+    <string name="quran_logo">Quran Logo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in_q">Don\'t have an account already?</string>
+    <string name="sign_up_q">Already have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="helper_text">Minimum 6 characters required</string>
+    <string name="results">Results</string>
+    <string name="retypePassword">Retype Password</string>
+    <string name="recitation_mode">Recitation Mode</string>
+    <string name="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمٌِ</string>
+    <string name="surah_ikhlas_1">قُلْ هُوَ ٱللَّهُ أَحَدٌ</string>
+    <string name="surah_ikhlas_2">ٱللَّهُ ٱلصَّمَدُ</string>
+    <string name="surah_ikhlas_3">لَمْ يَلِدْ وَلَمْ يُولَدْ </string>
+    <string name="surah_ikhlas_4">وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ</string>
+    <string name="microphone">Use this to record your recitation.</string>
+
+
+
+
+
+
+
+
+
+</resources>

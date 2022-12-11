@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecitationActivity">
+
+    <TextView
+        android:id="@+id/activityTitile"
+        android:layout_width="281dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/recitation_mode"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/verses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/verses"
+        android:layout_width="342dp"
+        android:layout_height="504dp"
+        app:layout_constraintBottom_toTopOf="@+id/mic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityTitile"
+        app:layout_constraintVertical_bias="0.5">
+
+        <TextView
+            android:id="@+id/bismillah"
+            android:layout_width="@dimen/ayaat_width"
+            android:layout_height="@dimen/ayaat_height"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/al_majeed_ar"
+            android:text="@string/bismillah"
+            android:textSize="@dimen/ayat_size"
+            android:layout_marginTop="@dimen/ayat_margin"/>
+
+
+        <TextView
+            android:id="@+id/ikhlas_1"
+            android:layout_width="@dimen/ayaat_width"
+            android:layout_height="@dimen/ayaat_height"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/al_majeed_ar"
+            android:text="@string/surah_ikhlas_1"
+            android:textSize="@dimen/ayat_size"
+            android:layout_below="@id/bismillah"
+            android:layout_marginTop="@dimen/ayat_margin"/>
+
+        <TextView
+            android:id="@+id/ikhlas_2"
+            android:layout_width="@dimen/ayaat_width"
+            android:layout_height="@dimen/ayaat_height"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/al_majeed_ar"
+            android:text="@string/surah_ikhlas_2"
+            android:textSize="@dimen/ayat_size"
+            android:layout_below="@id/ikhlas_1"
+            android:layout_marginTop="@dimen/ayat_margin"/>
+
+        <TextView
+            android:id="@+id/ikhlas_3"
+            android:layout_width="@dimen/ayaat_width"
+            android:layout_height="@dimen/ayaat_height"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/al_majeed_ar"
+            android:text="@string/surah_ikhlas_3"
+            android:textSize="@dimen/ayat_size"
+            android:layout_below="@id/ikhlas_2"
+            android:layout_marginTop="@dimen/ayat_margin"/>
+
+        <TextView
+            android:id="@+id/ikhlas_4"
+            android:layout_width="@dimen/ayaat_width"
+            android:layout_height="@dimen/ayaat_height"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/al_majeed_ar"
+            android:text="@string/surah_ikhlas_4"
+            android:textSize="@dimen/ayat_size"
+            android:layout_below="@id/ikhlas_3"
+            android:layout_marginTop="@dimen/ayat_margin"/>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/mic"
+        android:drawableTop="@drawable/ic_baseline_mic_24"
+        android:paddingTop="8dp"
+        android:background="@drawable/circle_btn"
+        app:backgroundTint="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="92dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="70dp"
+        android:contentDescription="@string/microphone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verses"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
