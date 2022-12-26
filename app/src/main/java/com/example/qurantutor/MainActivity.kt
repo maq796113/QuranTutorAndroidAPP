@@ -3,9 +3,10 @@ package com.example.qurantutor
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qurantutor.databinding.ActivityMainBinding
+import java.util.*
+import kotlin.concurrent.timerTask
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +22,9 @@ class MainActivity : AppCompatActivity() {
         ObjectAnimator.ofInt(binding.progressBar, "progress", currentProgress)
             .setDuration(splashTime)
             .start()
-        Handler().postDelayed( {
-            startActivity(Intent(this, LoginActivity::class.java))
+        val intent = Intent(this, LoginActivity::class.java)
+        Timer().schedule(timerTask {
+            startActivity(intent)
             finish()
         }, splashTime)
     }

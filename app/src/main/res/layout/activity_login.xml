@@ -8,6 +8,7 @@
     tools:context=".LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,10 +34,9 @@
             android:layout_height="610dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.5">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
             <TextView
                 android:id="@+id/textView2"
@@ -137,7 +137,18 @@
                 android:textColor="@color/ellipse_1_color"
                 android:translationX="250dp"
                 android:translationY="470dp" />
+
+
         </RelativeLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinator"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

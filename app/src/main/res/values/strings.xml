@@ -3,8 +3,6 @@
     <!-- slash_screen strings -->
 
     <string name="app_name">Quran Tutor</string>
-    <string name="ek_img_content">ExportKit Image</string>
-    <string name="_9_40_pm_string">9:40 pm</string>
     <string name="quran_tutor_string">Quran Tutor</string>
     <string name="quran_tutor_ai">Quran Tutor AI</string>
     <string name="quran_logo">Quran Logo</string>
@@ -24,13 +22,9 @@
     <string name="surah_ikhlas_3">لَمْ يَلِدْ وَلَمْ يُولَدْ </string>
     <string name="surah_ikhlas_4">وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ</string>
     <string name="microphone">Use this to record your recitation.</string>
-
-
-
-
-
-
-
+    <string name="bleu_score_89">BLEU Score: 89%</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
