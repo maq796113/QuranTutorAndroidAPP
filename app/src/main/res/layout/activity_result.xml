@@ -1,46 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ResultActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view_tag"
         android:layout_width="match_parent"
-        android:layout_height="539dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="635dp" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="137dp"
-            android:layout_height="99dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/bleu_score_89"
-            android:textColor="@color/card_text"
-            android:textSize="24sp"
-            tools:ignore="TextContrastCheck"
-            tools:layout_editor_absoluteX="80dp"
-            tools:layout_editor_absoluteY="175dp" />
-    </androidx.fragment.app.FragmentContainerView>
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="117dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/results"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_container_view_tag"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

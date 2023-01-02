@@ -3,17 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".QuranTutor"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.QuranTutor"
+        android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
         tools:targetApi="31"
         android:label="@string/app_name">
         <activity
@@ -34,7 +39,8 @@
         <activity
             android:name=".ResultActivity"
             android:exported="false"
-            android:label="@string/results">
+            android:label="@string/results"
+            android:theme="@style/Theme.Material3.DynamicColors.DayNight">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

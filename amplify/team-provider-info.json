@@ -1,0 +1,37 @@
+{
+  "dev": {
+    "categories": {
+      "auth": {
+        "qurantutor68eb8c6d": {}
+      },
+      "storage": {
+        "s3f6bca436": {}
+      }
+    },
+    "awscloudformation": {
+      "PermissionsBoundaryPolicyArn": "arn:aws:iam::465408924443:policy/AdminS3Policy"
+    }
+  },
+  "quran": {
+    "awscloudformation": {
+      "PermissionsBoundaryPolicyArn": "arn:aws:iam::465408924443:policy/AdminS3Policy",
+      "AuthRoleName": "amplify-qurantutor-quran-221012-authRole",
+      "UnauthRoleArn": "arn:aws:iam::465408924443:role/amplify-qurantutor-quran-221012-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::465408924443:role/amplify-qurantutor-quran-221012-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-qurantutor-quran-221012-deployment",
+      "UnauthRoleName": "amplify-qurantutor-quran-221012-unauthRole",
+      "StackName": "amplify-qurantutor-quran-221012",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:465408924443:stack/amplify-qurantutor-quran-221012/26810330-89f7-11ed-910e-06c5ee7dd0ed",
+      "AmplifyAppId": "d3al82r4eb18dt"
+    },
+    "categories": {
+      "auth": {
+        "qurantutor68eb8c6d": {}
+      },
+      "storage": {
+        "s30bf4f019": {}
+      }
+    }
+  }
+}

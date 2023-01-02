@@ -14,4 +14,7 @@
     <dimen name="ayaat_height">45dp</dimen>
     <dimen name="ayat_size">26sp</dimen>
     <dimen name="ayat_margin">30dp</dimen>
+
+    <dimen name="titleFontSize">30sp</dimen>
+    <dimen name="bodyFontSize">45sp</dimen>
 </resources>

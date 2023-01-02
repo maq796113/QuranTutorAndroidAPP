@@ -9,7 +9,7 @@
     <string name="sign_in">Sign In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="sign_in_q">Don\'t have an account already?</string>
+    <string name="sign_in_q">Don\'t have an account?</string>
     <string name="sign_up_q">Already have an account?</string>
     <string name="sign_up">Sign Up</string>
     <string name="helper_text">Minimum 6 characters required</string>
@@ -22,9 +22,12 @@
     <string name="surah_ikhlas_3">لَمْ يَلِدْ وَلَمْ يُولَدْ </string>
     <string name="surah_ikhlas_4">وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ</string>
     <string name="microphone">Use this to record your recitation.</string>
-    <string name="bleu_score_89">BLEU Score: 89%</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bleu_score">BLEU Score:</string>
+    <string name="title">wait for results…</string>
+    <string name="body">…</string>
+    <string name="error">ERROR</string>
+    <string name ="wrongLang">"This Ain't Even Arabic"</string>
+
 
 
 </resources>

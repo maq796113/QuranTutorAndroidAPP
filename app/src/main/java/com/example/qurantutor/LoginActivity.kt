@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.widget.Toast
+import com.anggrayudi.storage.SimpleStorageHelper
 import com.example.qurantutor.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -19,7 +22,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        if (!Environment.isExternalStorageManager()) {
+            val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+            startActivity(intent)
+        }
         auth = FirebaseAuth.getInstance()
         binding.loginButton.setOnClickListener {
             if (binding.email.text!!.trim().toString().isEmpty() || binding.password.text!!.trim().toString().isEmpty()) {
@@ -38,7 +44,9 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                startActivity(Intent(this, RecitationActivity::class.java))
+                val intent = Intent(this, RecitationActivity::class.java)
+                intent.putExtra("emailAddress", email)
+                startActivity(intent)
             }
             else {
                 Snackbar.make(binding.coordinator, "Error !! "+ task.exception + "\nIf you don't have an account yet then sign up.", Toast.LENGTH_LONG).setAction("Sign Up") {
