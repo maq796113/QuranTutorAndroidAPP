@@ -12,15 +12,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.LifecycleCoroutineScope
-import com.amazonaws.AmazonServiceException
 import com.amazonaws.auth.BasicAWSCredentials
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferNetworkLossHandler
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferState
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility
+import com.amazonaws.regions.Region
 import com.amazonaws.services.s3.AmazonS3Client
-import com.amazonaws.services.s3.model.PutObjectRequest
-import com.amazonaws.services.s3.model.PutObjectResult
-import com.amplifyframework.core.Amplify.Storage
-import com.amplifyframework.kotlin.core.Amplify.Companion.Storage
-import com.amplifyframework.storage.options.StorageUploadFileOptions
 import com.anggrayudi.storage.SimpleStorageHelper
 import com.anggrayudi.storage.file.*
 import com.example.qurantutor.databinding.ActivityRecitationBinding
@@ -29,12 +27,6 @@ import kotlinx.coroutines.*
 import java.io.File
 import java.io.IOException
 import java.util.*
-import androidx.lifecycle.lifecycleScope
-import com.amplifyframework.core.Amplify
-import com.amplifyframework.core.Consumer
-import com.amplifyframework.storage.StorageException
-
-
 
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
@@ -54,10 +46,7 @@ class RecitationActivity : AppCompatActivity() {
 
 
 
-    private fun generateFileName(): String {
-        counter++
-        return "surahIkhlas-$counter.wav"
-    }
+
     @RequiresApi(Build.VERSION_CODES.S)
     private fun createAudioFolder() {
         val email = intent.getStringExtra("emailAddress")
@@ -70,67 +59,63 @@ class RecitationActivity : AppCompatActivity() {
         filePath = file.absolutePath
     }
 
-//    private suspend fun uploadAudioFie2S3(): PutObjectResult? {
-//        val result: PutObjectResult?
-//        try {
-//            val dotenv = dotenv {
-//                directory = "/assets"
-//                filename = "env"
-//            }
-//            val accessKey = dotenv["AWS_ACCESS_KEY"]
-//            val secretKey = dotenv["AWS_SECRET_KEY"]
-//            val credentialsProvider = BasicAWSCredentials(accessKey, secretKey)
-//            val s3Client = AmazonS3Client(credentialsProvider)
-//            val request = PutObjectRequest("audiofileswav", generateFileName(), filePath)
-//            delay(1)
-//            result = s3Client.putObject(request)
-//            if (result!=null) {
-//                Log.d("TAG", "Coroutine Successful")
-//            }
-//            return result
-//        } catch  (e: AmazonServiceException) {
-//            Log.d("error", "Amazon Service")
-//        }
-//        return null
-//    }
-//
-//    private suspend fun letsUploadAudioFie2S3() {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val result = async { uploadAudioFie2S3() }
-//            result.await()
-//        }
-//    }
-    private suspend fun uploadFile() {
-        val options = StorageUploadFileOptions.defaultInstance()
-        val upload = Amplify.Storage.uploadFile(
-                generateFileName(),
-                file,
-                options,
-                { progress ->
-                    Log.i("QuranTutor", "Fraction Completed: ${progress.fractionCompleted}")
-                },
-                { result ->
-                    Log.i("QuranTutor", "Successfully uploaded ${result.key}")
-                },
-                { error ->
-                    Log.i("QuranTutor", "Upload failed, ${error.message}")
-                }
-            )
-        try {
-            delay(1)
-            val result = upload.request
-            Log.i("QuranTutor", "Successfully uploaded: ${result.toString()}")
-        } catch (error: StorageException) {
-            Log.e("QuranTutor", "Upload failed", error)
-        }
-    }
-    private suspend fun letsUploadAudioFiles() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val result = async { uploadFile() }
-            result.await()
-        }
-    }
 
+
+
+
+    private fun uploadRecitations2S3() {
+//        val credentialsProvider = CognitoCachingCredentialsProvider(
+//            this,
+//            "us-east-1:81d54ad8-307c-4519-88b0-40b9761e80d9",
+//            Regions.US_EAST_1
+//        )
+        val dotenv = dotenv {
+                directory = "/assets"
+                filename = "env"
+            }
+        val accessKey = dotenv["aws_access_key_id"]
+        val secretKey = dotenv["aws_secret_access_key"]
+        val credentialsProvider = BasicAWSCredentials(accessKey, secretKey)
+        val s3Client = AmazonS3Client(credentialsProvider, Region.getRegion("us-east-1"))
+        val transferUtility = TransferUtility(s3Client, this)
+        TransferNetworkLossHandler.getInstance(this)
+        val observer = transferUtility.upload(
+            "recitations-audio-files", // The name of the bucket
+            _fileName, // The key of the object
+            file // The file to upload
+        )
+        observer.setTransferListener(object : TransferListener {
+            override fun onStateChanged(id: Int, state: TransferState) {
+                when(state) {
+                    TransferState.IN_PROGRESS -> {
+                        Log.i("Transfer", "In Progress")
+                    }
+                    TransferState.COMPLETED -> {
+                        Log.i("Transfer", "Completed")
+                    }
+                    TransferState.FAILED -> {
+                        Log.d("Transfer", "Failed")
+                    }
+                    TransferState.PAUSED -> {
+                        Log.i("Transfer", "Paused")
+                    }
+                    else -> {
+                        Log.i("Transfer", "......")
+                    }
+                }
+            }
+
+            override fun onProgressChanged(id: Int, bytesCurrent: Long, bytesTotal: Long) {
+                // Handle progress updates
+                val progress = (bytesCurrent * 100 / bytesTotal).toInt()
+                binding.uploadProgress.setProgressCompat(progress, true)
+            }
+
+            override fun onError(id: Int, ex: Exception) {
+                Toast.makeText(this@RecitationActivity, "Failed To Upload The File With The Exception: $ex", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
 
 
 
@@ -179,10 +164,7 @@ class RecitationActivity : AppCompatActivity() {
             release()
         }
         mediaRecorder = null
-        CoroutineScope(Dispatchers.IO).launch {
-            //letsUploadAudioFie2S3()
-            letsUploadAudioFiles()
-        }
+        uploadRecitations2S3()
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("fileName", _fileName)
         intent.putExtra("filePath", filePath)
@@ -193,9 +175,8 @@ class RecitationActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Amplify().initializeAmplify(this)
         uid = UUID.randomUUID().toString()
-        _fileName = "audio$uid.wav"
+        _fileName = "surahIkhlas-$uid.wav"
         binding = ActivityRecitationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
