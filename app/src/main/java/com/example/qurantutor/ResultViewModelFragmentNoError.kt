@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.qurantutor.viewmodel.ResultActivityViewModel
 
 class ResultViewModelFragmentNoError : Fragment() {
@@ -20,6 +21,8 @@ class ResultViewModelFragmentNoError : Fragment() {
         textViewTitle = view.findViewById(R.id.titleText)
         textViewBody = view.findViewById(R.id.bodyText)
         textViewTitle.text = R.string.bleu_score.toString()
+
+        viewModel = ViewModelProvider(this)[ResultActivityViewModel::class.java]
         viewModel.data.observe(viewLifecycleOwner) {
             textViewBody.text = it[0].bleu_score.toString()
         }

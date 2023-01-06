@@ -1,13 +1,12 @@
 package com.example.qurantutor
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.qurantutor.databinding.ActivityResultBinding
 import com.example.qurantutor.viewmodel.ResultActivityViewModel
-import java.io.File
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
@@ -17,8 +16,8 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        val filename = intent.getStringExtra("fileName")
         viewModel = ViewModelProvider(this)[ResultActivityViewModel::class.java]
+        val filename = intent.getStringExtra("fileName")
         viewModel.getPost(filename)
         viewModel.errorMssg
         viewModel.data.observe(this, Observer { data ->
@@ -32,14 +31,13 @@ class ResultActivity : AppCompatActivity() {
                     .replace(R.id.fragment_container_view_tag, ResultViewModelFragmentNoError())
                     .commit()
             }
-
         })
-        val filePath = intent.getStringExtra("filePath")
-        val file = File(filePath!!)
-        val deleted = file.delete()
-        if (!deleted) {
-            Toast.makeText(this, "App was unable to delete the audio file automatically", Toast.LENGTH_SHORT).show()
-        }
+//        val filePath = intent.getStringExtra("filePath")
+//        val file = File(filePath!!)
+//        val deleted = file.delete()
+//        if (!deleted) {
+//            Toast.makeText(this, "App was unable to delete the audio file automatically", Toast.LENGTH_SHORT).show()
+//        }
 
     }
 }

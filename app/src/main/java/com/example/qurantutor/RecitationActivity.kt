@@ -1,13 +1,17 @@
 package com.example.qurantutor
 
 import android.Manifest
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.MotionEvent
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -41,10 +45,7 @@ class RecitationActivity : AppCompatActivity() {
     private lateinit var file: File
     private var clicks: Int = 0
     private var uid: String = ""
-    private var counter: Int = 0
     private val storageHelper = SimpleStorageHelper(this)
-
-
 
 
     @RequiresApi(Build.VERSION_CODES.S)
@@ -64,11 +65,7 @@ class RecitationActivity : AppCompatActivity() {
 
 
     private fun uploadRecitations2S3() {
-//        val credentialsProvider = CognitoCachingCredentialsProvider(
-//            this,
-//            "us-east-1:81d54ad8-307c-4519-88b0-40b9761e80d9",
-//            Regions.US_EAST_1
-//        )
+
         val dotenv = dotenv {
                 directory = "/assets"
                 filename = "env"
@@ -92,6 +89,10 @@ class RecitationActivity : AppCompatActivity() {
                     }
                     TransferState.COMPLETED -> {
                         Log.i("Transfer", "Completed")
+                        val intent = Intent(this@RecitationActivity, ResultActivity::class.java)
+                        intent.putExtra("fileName", _fileName)
+                        intent.putExtra("filePath", filePath)
+                        startActivity(intent)
                     }
                     TransferState.FAILED -> {
                         Log.d("Transfer", "Failed")
@@ -147,12 +148,10 @@ class RecitationActivity : AppCompatActivity() {
             setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
             try {
                 prepare()
-                Toast.makeText(this@RecitationActivity, "SUCCESS", Toast.LENGTH_LONG).show()
             } catch (e: IOException) {
                 Toast.makeText(this@RecitationActivity, "prepare() failed with error: $e", Toast.LENGTH_LONG).show()
             }
             start()
-            Toast.makeText(this@RecitationActivity, "Started Recording", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -165,10 +164,6 @@ class RecitationActivity : AppCompatActivity() {
         }
         mediaRecorder = null
         uploadRecitations2S3()
-        val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra("fileName", _fileName)
-        intent.putExtra("filePath", filePath)
-        startActivity(intent)
     }
 
 
@@ -186,6 +181,7 @@ class RecitationActivity : AppCompatActivity() {
         Toast.makeText(this, "Files Will Be Stored Here: $filePath", Toast.LENGTH_LONG).show()
         filePath = "$filePath/$_fileName"
         file = File(filePath)
+
         binding.mic.setOnClickListener {
             clicks++
             if (clicks==2) {

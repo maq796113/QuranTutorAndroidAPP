@@ -1,4 +1,5 @@
 package com.example.qurantutor.viewmodel
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,12 +22,14 @@ class ResultActivityViewModel: ViewModel() {
                 .collect { response->
                     if (response.isSuccessful) {
                         data.value = response.body()
+                        Log.d("Response", "Successful")
                     } else {
                         errorMssg = "Server Error"
                         error = true
+                        Log.d("Response", errorMssg)
                     }
-
                 }
+
         }
     }
 }
