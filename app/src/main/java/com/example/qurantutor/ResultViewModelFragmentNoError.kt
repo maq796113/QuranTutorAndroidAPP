@@ -1,6 +1,7 @@
 package com.example.qurantutor
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,13 +18,13 @@ class ResultViewModelFragmentNoError : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_result_noterror, container, false)
+        val view = inflater.inflate(R.layout.fragment_result_no_error, container, false)
         textViewTitle = view.findViewById(R.id.titleText)
         textViewBody = view.findViewById(R.id.bodyText)
-        textViewTitle.text = R.string.bleu_score.toString()
-
+        textViewTitle.text = getString(R.string.bleu_score)
         viewModel = ViewModelProvider(this)[ResultActivityViewModel::class.java]
         viewModel.data.observe(viewLifecycleOwner) {
+            Log.d("Bleu Score:", it[0].bleu_score.toString())
             textViewBody.text = it[0].bleu_score.toString()
         }
         return view

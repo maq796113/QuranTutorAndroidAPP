@@ -21,6 +21,7 @@ class ResultActivityViewModel: ViewModel() {
                 }
                 .collect { response->
                     if (response.isSuccessful) {
+                        Log.d("Response", "viewModel ${response.body()}")
                         data.value = response.body()
                         Log.d("Response", "Successful")
                     } else {

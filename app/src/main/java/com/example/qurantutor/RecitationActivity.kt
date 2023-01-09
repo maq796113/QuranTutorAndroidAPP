@@ -1,36 +1,26 @@
 package com.example.qurantutor
 
 import android.Manifest
-import android.animation.ArgbEvaluator
-import android.animation.ValueAnimator
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
-import android.view.MotionEvent
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.amazonaws.auth.BasicAWSCredentials
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferNetworkLossHandler
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferState
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility
-import com.amazonaws.regions.Region
-import com.amazonaws.services.s3.AmazonS3Client
 import com.anggrayudi.storage.SimpleStorageHelper
 import com.anggrayudi.storage.file.*
 import com.example.qurantutor.databinding.ActivityRecitationBinding
-import io.github.cdimascio.dotenv.dotenv
+import com.example.qurantutor.network.RetrofitBuilderSmb.smbService
 import kotlinx.coroutines.*
+import okhttp3.*
 import java.io.File
 import java.io.IOException
 import java.util.*
+import retrofit2.Callback
 
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
@@ -60,63 +50,6 @@ class RecitationActivity : AppCompatActivity() {
         filePath = file.absolutePath
     }
 
-
-
-
-
-    private fun uploadRecitations2S3() {
-
-        val dotenv = dotenv {
-                directory = "/assets"
-                filename = "env"
-            }
-        val accessKey = dotenv["aws_access_key_id"]
-        val secretKey = dotenv["aws_secret_access_key"]
-        val credentialsProvider = BasicAWSCredentials(accessKey, secretKey)
-        val s3Client = AmazonS3Client(credentialsProvider, Region.getRegion("us-east-1"))
-        val transferUtility = TransferUtility(s3Client, this)
-        TransferNetworkLossHandler.getInstance(this)
-        val observer = transferUtility.upload(
-            "recitations-audio-files", // The name of the bucket
-            _fileName, // The key of the object
-            file // The file to upload
-        )
-        observer.setTransferListener(object : TransferListener {
-            override fun onStateChanged(id: Int, state: TransferState) {
-                when(state) {
-                    TransferState.IN_PROGRESS -> {
-                        Log.i("Transfer", "In Progress")
-                    }
-                    TransferState.COMPLETED -> {
-                        Log.i("Transfer", "Completed")
-                        val intent = Intent(this@RecitationActivity, ResultActivity::class.java)
-                        intent.putExtra("fileName", _fileName)
-                        intent.putExtra("filePath", filePath)
-                        startActivity(intent)
-                    }
-                    TransferState.FAILED -> {
-                        Log.d("Transfer", "Failed")
-                    }
-                    TransferState.PAUSED -> {
-                        Log.i("Transfer", "Paused")
-                    }
-                    else -> {
-                        Log.i("Transfer", "......")
-                    }
-                }
-            }
-
-            override fun onProgressChanged(id: Int, bytesCurrent: Long, bytesTotal: Long) {
-                // Handle progress updates
-                val progress = (bytesCurrent * 100 / bytesTotal).toInt()
-                binding.uploadProgress.setProgressCompat(progress, true)
-            }
-
-            override fun onError(id: Int, ex: Exception) {
-                Toast.makeText(this@RecitationActivity, "Failed To Upload The File With The Exception: $ex", Toast.LENGTH_LONG).show()
-            }
-        })
-    }
 
 
 
@@ -163,7 +96,33 @@ class RecitationActivity : AppCompatActivity() {
             release()
         }
         mediaRecorder = null
-        uploadRecitations2S3()
+        uploadRecitation()
+    }
+
+    private fun uploadRecitation() {
+        val requestFile = RequestBody.create(MediaType.parse("audio/x-wav"), file)
+        val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+        val call = smbService.uploadFile(body)
+        call.enqueue(object : Callback<ResponseBody> {
+
+            override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@RecitationActivity, "Upload Failed With The Throwable: $t", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: retrofit2.Call<ResponseBody>,
+                response: retrofit2.Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    // the upload was successful
+                    Toast.makeText(this@RecitationActivity, "Upload Was A Successful", Toast.LENGTH_LONG).show()
+                } else {
+                    // the upload was not successful
+                    Toast.makeText(this@RecitationActivity, "Error uploading file", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
     }
 
 
@@ -215,3 +174,5 @@ class RecitationActivity : AppCompatActivity() {
         storageHelper.onRestoreInstanceState(savedInstanceState)
     }
 }
+
+

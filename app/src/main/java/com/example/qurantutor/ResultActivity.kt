@@ -22,13 +22,13 @@ class ResultActivity : AppCompatActivity() {
         viewModel.errorMssg
         viewModel.data.observe(this, Observer { data ->
             Toast.makeText(this, data[0].language, Toast.LENGTH_LONG).show()
-            if (viewModel.error || data[0].language != "ar") {
+            if (!viewModel.error || data[0].language == "ar") {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container_view_tag, ResultViewModelFragmentError())
+                    .replace(R.id.fragment_container_view_tag, ResultViewModelFragmentNoError())
                     .commit()
             } else {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container_view_tag, ResultViewModelFragmentNoError())
+                    .replace(R.id.fragment_container_view_tag, ResultViewModelFragmentError())
                     .commit()
             }
         })
