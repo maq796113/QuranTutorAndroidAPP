@@ -14,13 +14,12 @@ import androidx.core.app.ActivityCompat
 import com.anggrayudi.storage.SimpleStorageHelper
 import com.anggrayudi.storage.file.*
 import com.example.qurantutor.databinding.ActivityRecitationBinding
-import com.example.qurantutor.network.RetrofitBuilderSmb.smbService
 import kotlinx.coroutines.*
 import okhttp3.*
 import java.io.File
 import java.io.IOException
 import java.util.*
-import retrofit2.Callback
+
 
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
@@ -100,29 +99,24 @@ class RecitationActivity : AppCompatActivity() {
     }
 
     private fun uploadRecitation() {
-        val requestFile = RequestBody.create(MediaType.parse("audio/x-wav"), file)
-        val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-        val call = smbService.uploadFile(body)
-        call.enqueue(object : Callback<ResponseBody> {
+        val storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=<storage_account_name>;AccountKey=<storage_account_key>"
+        val containerName = "<container_name>"
+        val fileName = "audio.wav"
 
-            override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@RecitationActivity, "Upload Failed With The Throwable: $t", Toast.LENGTH_LONG).show()
-            }
+        val storageAccount = CloudStorageAccount.parse(storageConnectionString)
+        val blobClient = storageAccount.createCloudBlobClient()
+        val container = blobClient.getContainerReference(containerName)
 
-            override fun onResponse(
-                call: retrofit2.Call<ResponseBody>,
-                response: retrofit2.Response<ResponseBody>
-            ) {
-                if (response.isSuccessful) {
-                    // the upload was successful
-                    Toast.makeText(this@RecitationActivity, "Upload Was A Successful", Toast.LENGTH_LONG).show()
-                } else {
-                    // the upload was not successful
-                    Toast.makeText(this@RecitationActivity, "Error uploading file", Toast.LENGTH_SHORT).show()
-                }
-            }
+// Create the container if it does not exist
+        container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, null, null)
 
-        })
+        val blob = container.getBlockBlobReference(fileName)
+        val outputStream = blob.openOutputStream()
+
+// Write the contents of the wave audio file to the output stream
+        outputStream.write(audioData)
+
+        outputStream.close()
     }
 
 
