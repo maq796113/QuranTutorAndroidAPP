@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("/result")
-    suspend fun getItems(@Query("file_name") fileName: String): Response<List<ResponseData>>
+    suspend fun fetchData(@Query("file_name") fileName: String): Response<ResponseData>
 }

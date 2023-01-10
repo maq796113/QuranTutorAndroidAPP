@@ -2,18 +2,20 @@ package com.example.qurantutor.requests
 
 
 import com.example.qurantutor.data.ResponseData
-import com.example.qurantutor.network.RetrofitBuilderFastApi
+import com.example.qurantutor.network.ApiServiceImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
+import javax.inject.Inject
 
-class PostRepo {
-    companion object{
-        fun fetchData(query: String?): Flow<Response<List<ResponseData>>> = flow {
-            val response = RetrofitBuilderFastApi.fastApiService.getItems(query!!)
-            emit(response)
-        }.flowOn(Dispatchers.IO)
-    }
+
+class PostRepo
+@Inject
+constructor(private val apiServiceImpl: ApiServiceImpl) {
+    fun fetchData(query: String): Flow<Response<ResponseData>> = flow {
+        val response = apiServiceImpl.fetchData(query)
+        emit(response)
+    }.flowOn(Dispatchers.IO)
 }

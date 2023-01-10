@@ -27,6 +27,7 @@
     <string name="body">…</string>
     <string name="error">ERROR</string>
     <string name ="wrongLang">"This Ain't Even Arabic"</string>
+    <string name="error_505">ERROR 505</string>
 
 
 

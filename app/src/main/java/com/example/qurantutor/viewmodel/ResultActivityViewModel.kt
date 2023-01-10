@@ -1,34 +1,34 @@
 package com.example.qurantutor.viewmodel
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.qurantutor.data.ResponseData
 import com.example.qurantutor.requests.PostRepo
-import kotlinx.coroutines.*
+import com.example.qurantutor.util.ApiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ResultActivityViewModel: ViewModel() {
-    val data: MutableLiveData<List<ResponseData>> = MutableLiveData()
+@HiltViewModel
+class ResultActivityViewModel
+@Inject
+constructor(private val postRepo: PostRepo): ViewModel() {
+    private val postStateFlow: MutableStateFlow<ApiState> = MutableStateFlow(ApiState.Empty)
+    val observerStateFlow: StateFlow<ApiState> = postStateFlow
     var error = false
     var errorMssg = String()
-    fun getPost(filename: String?) {
+    fun getPost(filename: String) {
         viewModelScope.launch {
-            PostRepo.fetchData(filename)
+            postStateFlow.value = ApiState.Loading
+            postRepo.fetchData(filename)
                 .catch { e->
+                    postStateFlow.value=ApiState.Failure(e)
                     errorMssg = e.message.toString()
                     error = true
                 }
                 .collect { response->
-                    if (response.isSuccessful) {
-                        Log.d("Response", "viewModel ${response.body()}")
-                        data.value = response.body()
-                        Log.d("Response", "Successful")
-                    } else {
-                        errorMssg = "Server Error"
-                        error = true
-                        Log.d("Response", errorMssg)
-                    }
+                    postStateFlow.value=ApiState.Success(response)
                 }
 
         }
