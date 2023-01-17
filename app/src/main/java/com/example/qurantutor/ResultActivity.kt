@@ -2,21 +2,24 @@ package com.example.qurantutor
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.qurantutor.databinding.ActivityResultBinding
+import com.example.qurantutor.isLoadingSingleton.BooleanSingleton
 import com.example.qurantutor.util.ApiState
 import com.example.qurantutor.viewmodel.ResultActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
     private lateinit var viewModel: ResultActivityViewModel
-    private var notArabic: Boolean = false
+    private var notArabic = false
+    @Inject
+    lateinit var booleanSingleton: BooleanSingleton
     private var bleuScore: Float = 0.0f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,15 +35,17 @@ class ResultActivity : AppCompatActivity() {
             viewModel.observerStateFlow.collect {
                 when(it) {
                     is ApiState.Loading-> {
-                        loadingAnimation()
+                        booleanSingleton.isLoading = !booleanSingleton.isLoading
                     }
                     is ApiState.Failure-> {
+                        Log.d("ErrorCommunicatingWithAPI", it.mssg.toString())
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container_view_tag, ResultViewModelFragmentError())
                             .commit()
                     }
                     is ApiState.Success-> {
                         if (!it.data.body()?.language.equals("ar")) {
+                            booleanSingleton.isLoading = !booleanSingleton.isLoading
                             notArabic = true
                             val errorFragment = ResultViewModelFragmentError()
                             val bundle = Bundle()
@@ -74,30 +79,6 @@ class ResultActivity : AppCompatActivity() {
 //        }
 
     }
-
-    private fun loadingAnimation() {
-        var splashTime = 0
-        while (splashTime < 6000) {
-            Thread.sleep(100)
-
-            if (splashTime < 2000) {
-                setText("Loading.")
-            } else if (splashTime < 4000) {
-                setText("Loading..")
-            } else  {
-                setText("Loading...")
-            }
-            splashTime += 100
-        }
-    }
-
-    private fun setText(text: String) {
-        runOnUiThread {
-            val titleText = findViewById<TextView>(R.id.bodyText)
-            titleText.text = text
-        }
-    }
-
 }
 
 

@@ -12,7 +12,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.net.toUri
-import androidx.lifecycle.MutableLiveData
 import com.anggrayudi.storage.SimpleStorageHelper
 import com.anggrayudi.storage.file.*
 import com.example.qurantutor.databinding.ActivityRecitationBinding
@@ -40,7 +39,7 @@ class RecitationActivity : AppCompatActivity() {
     private lateinit var file: File
     private var clicks: Int = 0
     private var uid: String = ""
-    private lateinit var progress: MutableLiveData<Float>
+
     private val storageHelper = SimpleStorageHelper(this)
     private lateinit var storageRef: StorageReference
 
@@ -104,22 +103,25 @@ class RecitationActivity : AppCompatActivity() {
         }
         mediaRecorder = null
         uploadRecitation()
-        val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra("fileName", _fileName)
-        startActivity(intent)
     }
 
 
 
     private fun uploadRecitation() {
+        var progress = 0.0f
         val recitationFileRef = storageRef.child(_fileName)
+
         recitationFileRef.putFile(file.toUri()).addOnSuccessListener {
             Toast.makeText(this, "File Upload Started Successfully", Toast.LENGTH_LONG).show()
         }.addOnFailureListener {
             Toast.makeText(this, "File Upload Failed", Toast.LENGTH_LONG).show()
         }.addOnProgressListener { taskSnapshot ->
-            progress.value = 100.0f*(taskSnapshot.bytesTransferred/taskSnapshot.totalByteCount)
-            binding.uploadProgress.setProgressCompat(progress.value!!.toInt(), true)
+            progress = 100.0f*(taskSnapshot.bytesTransferred/taskSnapshot.totalByteCount)
+            binding.uploadProgress.setProgressCompat(progress.toInt(), true)
+        }.addOnCompleteListener {
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("fileName", _fileName)
+            startActivity(intent)
         }
     }
 
