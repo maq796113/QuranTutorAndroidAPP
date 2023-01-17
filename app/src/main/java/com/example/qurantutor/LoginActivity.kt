@@ -2,12 +2,10 @@ package com.example.qurantutor
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.widget.Toast
-import com.anggrayudi.storage.SimpleStorageHelper
+import androidx.appcompat.app.AppCompatActivity
 import com.example.qurantutor.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -44,12 +42,11 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                val intent = Intent(this, RecitationActivity::class.java)
-                intent.putExtra("emailAddress", email)
+                val intent = Intent(this, DashboardActivity::class.java)
                 startActivity(intent)
             }
             else {
-                Snackbar.make(binding.coordinator, "Error !! "+ task.exception + "\nIf you don't have an account yet then sign up.", Toast.LENGTH_LONG).setAction("Sign Up") {
+                Snackbar.make(binding.coordinator, "Error !! "+ task.exception + "\nIf you don't have an account yet then sign up.", Snackbar.LENGTH_LONG).setAction("Sign Up") {
                     startActivity(Intent(this, SignUpActivity::class.java))
                 }.show()
             }

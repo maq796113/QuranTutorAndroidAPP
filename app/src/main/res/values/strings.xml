@@ -26,9 +26,12 @@
     <string name="title">wait for results…</string>
     <string name="body">…</string>
     <string name="error">ERROR</string>
-    <string name ="wrongLang">"This Ain't Even Arabic"</string>
+    <string name="wrongLang">"This Ain't Even Arabic"</string>
     <string name="error_505">ERROR 505</string>
-
+    <string name="bleu_score_text">%s%%</string>
+    <string name="welcome">Welcome %s%%</string>
+    <string name="surah">Surah</string>
+    <string name="gender">Gender</string>
 
 
 </resources>

@@ -18,10 +18,10 @@ constructor(private val postRepo: PostRepo): ViewModel() {
     val observerStateFlow: StateFlow<ApiState> = postStateFlow
     var error = false
     var errorMssg = String()
-    fun getPost(filename: String) {
+    fun getPost(filename: String, username: String, surahId: Int) {
         viewModelScope.launch {
             postStateFlow.value = ApiState.Loading
-            postRepo.fetchData(filename)
+            postRepo.fetchData(filename, username, surahId)
                 .catch { e->
                     postStateFlow.value=ApiState.Failure(e)
                     errorMssg = e.message.toString()

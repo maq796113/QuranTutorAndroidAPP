@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.qurantutor.databinding.ActivityResultBinding
-import com.example.qurantutor.isLoadingSingleton.BooleanSingleton
+import com.example.qurantutor.globalSingleton.Singleton
 import com.example.qurantutor.util.ApiState
 import com.example.qurantutor.viewmodel.ResultActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,24 +18,26 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
     private lateinit var viewModel: ResultActivityViewModel
     private var notArabic = false
+
     @Inject
-    lateinit var booleanSingleton: BooleanSingleton
+    lateinit var singleton: Singleton
     private var bleuScore: Float = 0.0f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         viewModel = ViewModelProvider(this)[ResultActivityViewModel::class.java]
         val filename = intent.getStringExtra("fileName")
-        Log.d("filename", "$filename")
-        viewModel.getPost(filename!!)
+        Log.d("filename", filename.toString())
+        viewModel.getPost(filename!!, singleton.username, singleton.surahID)
         viewModel.errorMssg
         lifecycleScope.launchWhenStarted {
             viewModel.observerStateFlow.collect {
                 when(it) {
                     is ApiState.Loading-> {
-                        booleanSingleton.isLoading = !booleanSingleton.isLoading
+                        singleton.isLoading = !singleton.isLoading
                     }
                     is ApiState.Failure-> {
                         Log.d("ErrorCommunicatingWithAPI", it.mssg.toString())
@@ -45,7 +47,7 @@ class ResultActivity : AppCompatActivity() {
                     }
                     is ApiState.Success-> {
                         if (!it.data.body()?.language.equals("ar")) {
-                            booleanSingleton.isLoading = !booleanSingleton.isLoading
+                            singleton.isLoading = !singleton.isLoading
                             notArabic = true
                             val errorFragment = ResultViewModelFragmentError()
                             val bundle = Bundle()

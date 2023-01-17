@@ -14,8 +14,8 @@ import javax.inject.Inject
 class PostRepo
 @Inject
 constructor(private val apiServiceImpl: ApiServiceImpl) {
-    fun fetchData(query: String): Flow<Response<ResponseData>> = flow {
-        val response = apiServiceImpl.fetchData(query)
+    fun fetchData(filename: String, username: String, surahId: Int): Flow<Response<ResponseData>> = flow {
+        val response = apiServiceImpl.fetchData(filename, username, surahId)
         emit(response)
     }.flowOn(Dispatchers.IO)
 }

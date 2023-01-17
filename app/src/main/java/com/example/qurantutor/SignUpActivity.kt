@@ -2,12 +2,20 @@ package com.example.qurantutor
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log.d
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qurantutor.databinding.ActivitySignUpBinding
+import com.example.qurantutor.globalSingleton.Singleton
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
+    @Inject
+    lateinit var singleton: Singleton
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +31,20 @@ class SignUpActivity : AppCompatActivity() {
             ) {
                 if (binding.password.text?.trim().toString() == binding.retypePassword.text?.trim().toString())
                 {
+                    binding.gender.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+                        when(position) {
+                            1->{
+                                d("f", "Alpha Male Power")
+                            }
+                            2->{
+                                singleton.isMale = false
+                            }
+                            else -> {
+                                view.isEnabled = false
+                            }
+
+                        }
+                    }
                     createUser(
                         binding.email.text?.trim().toString(),
                         binding.password.text?.trim().toString()
@@ -59,22 +81,18 @@ class SignUpActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
+                    singleton.username = email
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Sign Up failed.",
                         Toast.LENGTH_SHORT).show()
                 }
             }
     }
-
-
-
-    companion object {
-        private const val TAG = "EmailPassword"
-    }
+    
 }
 
 

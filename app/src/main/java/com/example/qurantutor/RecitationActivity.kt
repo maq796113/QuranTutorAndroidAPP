@@ -15,10 +15,12 @@ import androidx.core.net.toUri
 import com.anggrayudi.storage.SimpleStorageHelper
 import com.anggrayudi.storage.file.*
 import com.example.qurantutor.databinding.ActivityRecitationBinding
+import com.example.qurantutor.globalSingleton.Singleton
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import okhttp3.*
 import java.io.File
@@ -27,6 +29,7 @@ import java.util.*
 
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
+@AndroidEntryPoint
 class RecitationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecitationBinding
     private lateinit var storageFirebase: FirebaseStorage
@@ -39,6 +42,8 @@ class RecitationActivity : AppCompatActivity() {
     private lateinit var file: File
     private var clicks: Int = 0
     private var uid: String = ""
+    lateinit var singleton: Singleton
+
 
     private val storageHelper = SimpleStorageHelper(this)
     private lateinit var storageRef: StorageReference
@@ -46,9 +51,8 @@ class RecitationActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.S)
     private fun createAudioFolder() {
-        val email = intent.getStringExtra("emailAddress")
         val root = this.getExternalFilesDir(Environment.DIRECTORY_MUSIC)
-        file = File(root!!.absolutePath, email!!)
+        file = File(root!!.absolutePath, singleton.username)
         val makeFolder = file.mkdirs()
         if (!makeFolder && !file.exists()) {
             Toast.makeText(this, "!!ERROR!! Failed To Make File", Toast.LENGTH_LONG).show()
@@ -109,7 +113,7 @@ class RecitationActivity : AppCompatActivity() {
 
     private fun uploadRecitation() {
         var progress = 0.0f
-        val recitationFileRef = storageRef.child(_fileName)
+        val recitationFileRef = storageRef.child("${singleton.username}/$_fileName")
 
         recitationFileRef.putFile(file.toUri()).addOnSuccessListener {
             Toast.makeText(this, "File Upload Started Successfully", Toast.LENGTH_LONG).show()

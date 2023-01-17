@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 
 class ApiServiceImpl @Inject constructor(private val apiService: ApiService) {
-    suspend fun fetchData(filename: String):Response<ResponseData> = apiService.fetchData(filename)
+    suspend fun fetchData(filename: String, username: String, surahId: Int):Response<ResponseData> = apiService.fetchData(filename, username, surahId)
 }
