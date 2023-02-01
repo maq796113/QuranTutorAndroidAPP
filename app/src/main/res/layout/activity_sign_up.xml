@@ -81,7 +81,8 @@
                 app:endIconMode="password_toggle"
                 app:helperText="@string/helper_text"
                 app:helperTextEnabled="true"
-                app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
+                app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"

@@ -21,6 +21,7 @@
 	<color name="shrine_pink_900">#e8e1e1</color>
 
 	<color name="seed">#4FAD40</color>
+	<color name="status_bar">#1C1C1C</color>
 	<color name="md_theme_light_primary">#006E01</color>
 	<color name="md_theme_light_onPrimary">#FFFFFF</color>
 	<color name="md_theme_light_primaryContainer">#97FA82</color>

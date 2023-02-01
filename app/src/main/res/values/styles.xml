@@ -10,7 +10,11 @@
 	<style name="Theme.Material3.Dark.NoActionBar">
 		<item name="windowActionBar">false</item>
 		<item name="windowNoTitle">true</item>
+		<item name="android:statusBarColor">@color/status_bar</item>
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 	</style>
+
 </resources>
 
 

@@ -1,8 +1,10 @@
 package com.example.qurantutor
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.util.Log.d
 import android.widget.AdapterView
 import android.widget.Toast
@@ -21,11 +23,27 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.statusBarColor = Color.parseColor("#1C1C1C")
+//        window.statusBarColor = Color.parseColor("#1C1C1C")
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         auth = FirebaseAuth.getInstance()
+        binding.password.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                Log.d("CharSeq", s.toString())
+                if (s!!.length < 6) {
+                    binding.passwordLayout.error = getString(R.string.helper_text)
+                } else {
+                    binding.passwordLayout.error = null
+                }
+            }
+        })
         binding.register.setOnClickListener {
             if (binding.email.text?.trim()!!.isNotEmpty() || binding.password.text?.trim()
                     !!.isNotEmpty() || binding.retypePassword.text?.trim()!!.isNotEmpty()
