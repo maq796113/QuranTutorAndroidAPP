@@ -1,60 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".DashboardActivity">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dropdown_menu"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="683dp"
-        android:hint="@string/surah"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTXT">
+        android:layout_height="wrap_content">
 
-        <AutoCompleteTextView
-            android:id="@+id/menu_drawer"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="408dp"
+            android:layout_height="319dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="375dp" />
+
+        <TextView
+            android:id="@+id/welcomeTXT"
+            android:layout_width="293dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="28dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/welcome"
+            android:textSize="@dimen/titleFontSize"
+            app:layout_constraintBottom_toTopOf="@+id/dropdown_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.006" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="218dp"
+            android:layout_height="171dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/arab_man"
+            tools:layout_editor_absoluteY="129dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_menu"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="none"
-            app:simpleItems="@array/surahs_available" />
+            android:layout_height="wrap_content"
+            android:hint="@string/surah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="314dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <AutoCompleteTextView
+                android:id="@+id/menu_drawer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="none"
+                app:simpleItems="@array/surahs_available" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="408dp"
-        android:layout_height="361dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777" />
-
-    <TextView
-        android:id="@+id/welcomeTXT"
-        android:layout_width="266dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="28dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/welcome"
-        android:textSize="@dimen/titleFontSize"
-        app:layout_constraintBottom_toTopOf="@+id/dropdown_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
