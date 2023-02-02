@@ -9,18 +9,20 @@
     tools:context=".DashboardActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="408dp"
-            android:layout_height="319dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="375dp" />
+
+            app:layout_constraintTop_toBottomOf="@id/dropdown_menu" />
 
         <TextView
             android:id="@+id/welcomeTXT"
@@ -38,26 +40,37 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.006" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="218dp"
-            android:layout_height="171dp"
+
+        <RelativeLayout
+            android:id="@+id/relativeLay"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:background="@drawable/avatar_holder"
+            tools:layout_editor_absoluteX="-3dp"
+            tools:layout_editor_absoluteY="108dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/arab_man"
-            tools:layout_editor_absoluteY="129dp" />
+            app:layout_constraintTop_toBottomOf="@id/welcomeTXT">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="124dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:translationY="45dp"
+                app:srcCompat="@drawable/arab_man" />
+        </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dropdown_menu"
             style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:hint="@string/surah"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="314dp">
+            app:layout_constraintTop_toBottomOf="@id/relativeLay">
 
             <AutoCompleteTextView
                 android:id="@+id/menu_drawer"

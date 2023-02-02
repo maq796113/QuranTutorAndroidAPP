@@ -136,6 +136,14 @@ class RecitationActivity : AppCompatActivity() {
         binding = ActivityRecitationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        if (singleton.surahID == 1) {
+            binding.verse1.text = resources.getText(R.string.surah_fatiha_1)
+            binding.verse2.text = resources.getText(R.string.surah_fatiha_2)
+            binding.verse3.text = resources.getText(R.string.surah_fatiha_3)
+            binding.verse4.text = resources.getText(R.string.surah_fatiha_4)
+            binding.verse5.text = resources.getText(R.string.surah_fatiha_5)
+            binding.verse6.text = resources.getText(R.string.surah_fatiha_6)
+        }
         uid = UUID.randomUUID().toString()
         _fileName = "surahIkhlas-$uid.wav"
         createAudioFolder()

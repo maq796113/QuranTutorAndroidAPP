@@ -16,11 +16,25 @@
     <string name="results">Results</string>
     <string name="retypePassword">Retype Password</string>
     <string name="recitation_mode">Recitation Mode</string>
+
+
     <string name="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمٌِ</string>
+
     <string name="surah_ikhlas_1">قُلْ هُوَ ٱللَّهُ أَحَدٌ</string>
     <string name="surah_ikhlas_2">ٱللَّهُ ٱلصَّمَدُ</string>
     <string name="surah_ikhlas_3">لَمْ يَلِدْ وَلَمْ يُولَدْ </string>
     <string name="surah_ikhlas_4">وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ</string>
+
+    <string name="surah_fatiha_1">ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ</string>
+    <string name="surah_fatiha_2">ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</string>
+    <string name="surah_fatiha_3">مَـٰلِكِ يَوْمِ ٱلدِّينِ</string>
+    <string name="surah_fatiha_4">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ</string>
+    <string name="surah_fatiha_5">ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ</string>
+    <string name="surah_fatiha_6">صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ</string>
+
+
+
+
     <string name="microphone">Use this to record your recitation.</string>
     <string name="bleu_score">BLEU Score:</string>
     <string name="title">wait for results…</string>

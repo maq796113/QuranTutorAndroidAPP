@@ -25,7 +25,7 @@
     <RelativeLayout
         android:id="@+id/verses"
         android:layout_width="342dp"
-        android:layout_height="504dp"
+        android:layout_height="540dp"
         app:layout_constraintBottom_toTopOf="@+id/mic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -35,10 +35,10 @@
 
 
         <TextView
-            android:id="@+id/ikhlas_2"
+            android:id="@+id/verse_2"
             android:layout_width="@dimen/ayaat_width"
             android:layout_height="@dimen/ayaat_height"
-            android:layout_below="@id/ikhlas_1"
+            android:layout_below="@id/verse_1"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="29dp"
@@ -58,7 +58,7 @@
             android:textSize="@dimen/ayat_size" />
 
         <TextView
-            android:id="@+id/ikhlas_1"
+            android:id="@+id/verse_1"
             android:layout_width="@dimen/ayaat_width"
             android:layout_height="@dimen/ayaat_height"
             android:layout_below="@id/bismillah"
@@ -70,10 +70,10 @@
             android:textSize="@dimen/ayat_size" />
 
         <TextView
-            android:id="@+id/ikhlas_4"
+            android:id="@+id/verse_4"
             android:layout_width="@dimen/ayaat_width"
             android:layout_height="@dimen/ayaat_height"
-            android:layout_below="@id/ikhlas_3"
+            android:layout_below="@id/verse_3"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="29dp"
@@ -82,10 +82,34 @@
             android:textSize="@dimen/ayat_size" />
 
         <TextView
-            android:id="@+id/ikhlas_3"
+            android:id="@+id/verse_5"
             android:layout_width="@dimen/ayaat_width"
             android:layout_height="@dimen/ayaat_height"
-            android:layout_below="@id/ikhlas_2"
+            android:layout_below="@id/verse_4"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="29dp"
+            android:fontFamily="@font/al_majeed_ar"
+            android:text=""
+            android:textSize="@dimen/ayat_size" />
+
+        <TextView
+            android:id="@+id/verse_6"
+            android:layout_width="@dimen/ayaat_width"
+            android:layout_height="@dimen/ayaat_height"
+            android:layout_below="@id/verse_5"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="29dp"
+            android:fontFamily="@font/al_majeed_ar"
+            android:text=""
+            android:textSize="@dimen/ayat_size" />
+
+        <TextView
+            android:id="@+id/verse_3"
+            android:layout_width="@dimen/ayaat_width"
+            android:layout_height="@dimen/ayaat_height"
+            android:layout_below="@id/verse_2"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="29dp"
