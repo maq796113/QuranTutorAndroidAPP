@@ -7,13 +7,19 @@ import android.os.Environment
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qurantutor.databinding.ActivityLoginBinding
+import com.example.qurantutor.globalSingleton.Singleton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @SuppressLint("CheckResult")
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    @Inject
+    lateinit var singleton: Singleton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
+                singleton.username = email
                 val intent = Intent(this, DashboardActivity::class.java)
                 startActivity(intent)
             }

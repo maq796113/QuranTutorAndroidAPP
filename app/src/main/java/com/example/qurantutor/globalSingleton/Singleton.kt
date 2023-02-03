@@ -7,7 +7,7 @@ import javax.inject.Singleton
 class Singleton @Inject constructor(){
 
     var isLoading = false
-    var isMale = false
+    var isMale = true
     var surahID = 0
     var username = ""
 }

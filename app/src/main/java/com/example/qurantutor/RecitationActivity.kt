@@ -26,6 +26,7 @@ import okhttp3.*
 import java.io.File
 import java.io.IOException
 import java.util.*
+import javax.inject.Inject
 
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
@@ -42,6 +43,7 @@ class RecitationActivity : AppCompatActivity() {
     private lateinit var file: File
     private var clicks: Int = 0
     private var uid: String = ""
+    @Inject
     lateinit var singleton: Singleton
 
 
