@@ -15,7 +15,7 @@
     <string name="helper_text">Minimum 6 characters required</string>
     <string name="results">Results</string>
     <string name="retypePassword">Retype Password</string>
-    <string name="recitation_mode">Recitation Mode</string>
+    <string name="recitation_mode">Recitation Mode: %s</string>
 
 
     <string name="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمٌِ</string>
@@ -32,6 +32,117 @@
     <string name="surah_fatiha_5">ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ</string>
     <string name="surah_fatiha_6">صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ</string>
 
+    <string name="surah_ash_sharh_1">َلَمْ نَشْرَحْ لَكَ صَدْرَكَ</string>
+    <string name="surah_ash_sharh_2">وَوَضَعْنَا عَنكَ وِزْرَكَ</string>
+    <string name="surah_ash_sharh_3">ٱلَّذِىٓ أَنقَضَ ظَهْرَكَ</string>
+    <string name="surah_ash_sharh_4">وَرَفَعْنَا لَكَ ذِكْرَكَ</string>
+    <string name="surah_ash_sharh_5">فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا</string>
+    <string name="surah_ash_sharh_6">إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا</string>
+    <string name="surah_ash_sharh_7">فَإِذَا فَرَغْتَ فَٱنصَبْ</string>
+    <string name="surah_ash_sharh_8">وَإِلَىٰ رَبِّكَ فَٱرْغَب</string>
+
+    <string name="surah_at_tin_1">وَٱلتِّينِ وَٱلزَّيْتُونِ</string>
+    <string name="surah_at_tin_2">وَطُورِ سِينِينَ</string>
+    <string name="surah_at_tin_3">وَهَـٰذَا ٱلْبَلَدِ ٱلْأَمِينِ</string>
+    <string name="surah_at_tin_4">لَقَدْ خَلَقْنَا ٱلْإِنسَـٰنَ فِىٓ أَحْسَنِ تَقْوِيمٍۢ</string>
+    <string name="surah_at_tin_5">ثُمَّ رَدَدْنَـٰهُ أَسْفَلَ سَـٰفِلِينَ</string>
+    <string name="surah_at_tin_6">إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍۢ</string>
+    <string name="surah_at_tin_7">فَمَا يُكَذِّبُكَ بَعْدُ بِٱلدِّينِ</string>
+    <string name="surah_at_tin_8">أَلَيْسَ ٱللَّهُ بِأَحْكَمِ ٱلْحَـٰكِمِينَ</string>
+
+    <string name="surah_al_qadr_1">إِنَّآ أَنزَلْنَـٰهُ فِى لَيْلَةِ ٱلْقَدْرِ</string>
+    <string name="surah_al_qadr_2">وَمَآ أَدْرَىٰكَ مَا لَيْلَةُ ٱلْقَدْرِ</string>
+    <string name="surah_al_qadr_3">لَيْلَةُ ٱلْقَدْرِ خَيْرٌۭ مِّنْ أَلْفِ شَهْرٍۢ</string>
+    <string name="surah_al_qadr_4">تَنَزَّلُ ٱلْمَلَـٰٓئِكَةُ وَٱلرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍۢ</string>
+    <string name="surah_al_qadr_5">سَلَـٰمٌ هِىَ حَتَّىٰ مَطْلَعِ ٱلْفَجْرِ</string>
+
+    <string name="surah_al_bayyinah_1">لَمْ يَكُنِ ٱلَّذِينَ كَفَرُوا۟ مِنْ أَهْلِ ٱلْكِتَـٰبِ وَٱلْمُشْرِكِينَ مُنفَكِّينَ حَتَّىٰ تَأْتِيَهُمُ ٱلْبَيِّنَةُ</string>
+    <string name="surah_al_bayyinah_2">رَسُولٌۭ مِّنَ ٱللَّهِ يَتْلُوا۟ صُحُفًۭا مُّطَهَّرَةًۭ</string>
+    <string name="surah_al_bayyinah_3">فِيهَا كُتُبٌۭ قَيِّمَةٌۭ</string>
+    <string name="surah_al_bayyinah_4">وَمَا تَفَرَّقَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَـٰبَ إِلَّا مِنۢ بَعْدِ مَا جَآءَتْهُمُ ٱلْبَيِّنَةُ</string>
+    <string name="surah_al_bayyinah_5">وَمَآ أُمِرُوٓا۟ إِلَّا لِيَعْبُدُوا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ وَيُقِيمُوا۟ ٱلصَّلَوٰةَ وَيُؤْتُوا۟ ٱلزَّكَوٰةَ ۚ وَذَٰلِكَ دِينُ ٱلْقَيِّمَةِ</string>
+    <string name="surah_al_bayyinah_6">إِنَّ ٱلَّذِينَ كَفَرُوا۟ مِنْ أَهْلِ ٱلْكِتَـٰبِ وَٱلْمُشْرِكِينَ فِى نَارِ جَهَنَّمَ خَـٰلِدِينَ فِيهَآ ۚ أُو۟لَـٰٓئِكَ هُمْ شَرُّ ٱلْبَرِيَّةِ</string>
+    <string name="surah_al_bayyinah_7">إِنَّ ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ أُو۟لَـٰٓئِكَ هُمْ خَيْرُ ٱلْبَرِيَّةِ</string>
+    <string name="surah_al_bayyinah_8">جَزَآؤُهُمْ عِندَ رَبِّهِمْ جَنَّـٰتُ عَدْنٍۢ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَـٰرُ خَـٰلِدِينَ فِيهَآ أَبَدًۭا ۖ رَّضِىَ ٱللَّهُ عَنْهُمْ وَرَضُوا۟ عَنْهُ ۚ ذَٰلِكَ لِمَنْ خَشِىَ رَبَّهُۥ</string>
+
+    <string name="surah_az_zalzalah_1">إِذَا زُلْزِلَتِ ٱلْأَرْضُ زِلْزَالَهَا</string>
+    <string name="surah_az_zalzalah_2">وَأَخْرَجَتِ ٱلْأَرْضُ أَثْقَالَهَا</string>
+    <string name="surah_az_zalzalah_3">وَقَالَ ٱلْإِنسَـٰنُ مَا لَهَا</string>
+    <string name="surah_az_zalzalah_4">يَوْمَئِذٍۢ تُحَدِّثُ أَخْبَارَهَا</string>
+    <string name="surah_az_zalzalah_5">بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا</string>
+    <string name="surah_az_zalzalah_6">يَوْمَئِذٍۢ يَصْدُرُ ٱلنَّاسُ أَشْتَاتًۭا لِّيُرَوْا۟ أَعْمَـٰلَهُمْ</string>
+    <string name="surah_az_zalzalah_7">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًۭا يَرَهُۥ</string>
+    <string name="surah_az_zalzalah_8">وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍۢ شَرًّۭا يَرَهُۥ</string>
+
+
+    <string name="surah_at_takathur_1">أَلْهَىٰكُمُ ٱلتَّكَاثُرُ</string>
+    <string name="surah_at_takathur_2">حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ</string>
+    <string name="surah_at_takathur_3">كَلَّا سَوْفَ تَعْلَمُونَ</string>
+    <string name="surah_at_takathur_4">ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ</string>
+    <string name="surah_at_takathur_5">كَلَّا لَوْ تَعْلَمُونَ عِلْمَ ٱلْيَقِينِ</string>
+    <string name="surah_at_takathur_6">لَتَرَوُنَّ ٱلْجَحِيمَ</string>
+    <string name="surah_at_takathur_7">ثُمَّ لَتَرَوُنَّهَا عَيْنَ ٱلْيَقِينِ</string>
+    <string name="surah_at_takathur_8">ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ ٱلنَّعِيمِ</string>
+
+    <string name="surah_al_asr_1"></string>
+    <string name="surah_al_asr_2"></string>
+    <string name="surah_al_asr_3"></string>
+
+    <string name="surah_al_fil_1"></string>
+    <string name="surah_al_fil_2"></string>
+    <string name="surah_al_fil_3"></string>
+    <string name="surah_al_fil_4"></string>
+    <string name="surah_al_fil_5"></string>
+
+
+    <string name="surah_quraysh_1"></string>
+    <string name="surah_quraysh_2"></string>
+    <string name="surah_quraysh_3"></string>
+    <string name="surah_quraysh_4"></string>
+
+
+    <string name="surah_al_maun_1"></string>
+    <string name="surah_al_maun_2"></string>
+    <string name="surah_al_maun_3"></string>
+    <string name="surah_al_maun_4"></string>
+    <string name="surah_al_maun_5"></string>
+    <string name="surah_al_maun_6"></string>
+    <string name="surah_al_maun_7"></string>
+
+    <string name="surah_al_kawthar_1"></string>
+    <string name="surah_al_kawthar_2"></string>
+    <string name="surah_al_kawthar_3"></string>
+
+
+    <string name="surah_al_kafirun_1"></string>
+    <string name="surah_al_kafirun_2"></string>
+    <string name="surah_al_kafirun_3"></string>
+    <string name="surah_al_kafirun_4"></string>
+    <string name="surah_al_kafirun_5"></string>
+    <string name="surah_al_kafirun_6"></string>
+
+    <string name="surah_an_nasr_1"></string>
+    <string name="surah_an_nasr_2"></string>
+    <string name="surah_an_nasr_3"></string>
+
+    <string name="surah_al_massad_1"></string>
+    <string name="surah_al_massad_2"></string>
+    <string name="surah_al_massad_3"></string>
+    <string name="surah_al_massad_4"></string>
+    <string name="surah_al_massad_5"></string>
+
+    <string name="surah_al_falaq_1"></string>
+    <string name="surah_al_falaq_2"></string>
+    <string name="surah_al_falaq_3"></string>
+    <string name="surah_al_falaq_4"></string>
+    <string name="surah_al_falaq_5"></string>
+
+    <string name="surah_an_nas_1"></string>
+    <string name="surah_an_nas_2"></string>
+    <string name="surah_an_nas_3"></string>
+    <string name="surah_an_nas_4"></string>
+    <string name="surah_an_nas_5"></string>
+    <string name="surah_an_nas_6"></string>
 
 
 
@@ -42,10 +153,11 @@
     <string name="error">ERROR</string>
     <string name="wrongLang">"This Ain't Even Arabic"</string>
     <string name="error_505">ERROR 505</string>
-    <string name="bleu_score_text">%s%%</string>
-    <string name="welcome">Welcome %s%%</string>
+    <string name="bleu_score_text">%s%</string>
+    <string name="welcome">Welcome %s</string>
     <string name="surah">Surah</string>
     <string name="gender">Gender</string>
+    <string name="hide">Hide</string>
 
 
 </resources>

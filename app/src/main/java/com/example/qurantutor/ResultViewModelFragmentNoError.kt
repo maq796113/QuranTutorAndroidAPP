@@ -28,7 +28,7 @@ class ResultViewModelFragmentNoError : Fragment() {
         if (singleton.isLoading) {
             textViewTitle.text = resources.getString(R.string.bleu_score)
             val bleuScore = ((arguments?.getFloat("bleuScore")?.toInt())?.times(100))
-            textViewBody.text = getString(R.string.bleu_score_text, bleuScore.toString())
+            textViewBody.text = String.format(resources.getString(R.string.bleu_score_text), bleuScore.toString())
             return view
         }
         return view

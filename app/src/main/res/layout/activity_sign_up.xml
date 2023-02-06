@@ -28,8 +28,10 @@
 
         <RelativeLayout
             android:id="@+id/form"
-            android:layout_width="345dp"
-            android:layout_height="690dp"
+            android:minWidth="345dp"
+            android:minHeight="690dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +41,8 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="146dp"
+                android:minWidth="146dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -67,7 +70,7 @@
                     android:layout_height="@dimen/form_size_length"
                     android:hint="@string/email"
                     android:inputType="text"
-                    android:textColorHint="#616161" />
+                    android:textColorHint="#97B6DA" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,7 +93,7 @@
                     android:layout_height="@dimen/form_size_length"
                     android:hint="@string/password"
                     android:inputType="textPassword"
-                    android:textColorHint="#757575"
+                    android:textColorHint="#97B6DA"
                     tools:ignore="TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -111,7 +114,7 @@
                     android:layout_height="@dimen/form_size_length"
                     android:hint="@string/retypePassword"
                     android:inputType="textPassword"
-                    android:textColorHint="#616161" />
+                    android:textColorHint="#97B6DA" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +134,7 @@
                     android:background="@color/black"
                     android:hint="@string/gender"
                     app:simpleItems="@array/genders"
-                    android:textColorHint="#616161"
+                    android:textColorHint="#97B6DA"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 

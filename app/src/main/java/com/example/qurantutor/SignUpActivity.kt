@@ -1,5 +1,4 @@
 package com.example.qurantutor
-
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -49,7 +48,7 @@ class SignUpActivity : AppCompatActivity() {
             ) {
                 if (binding.password.text?.trim().toString() == binding.retypePassword.text?.trim().toString())
                 {
-                    binding.gender.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+                    binding.gender.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
                         when(position) {
                             1->{
                                 d("f", "Alpha Male Power")
@@ -78,14 +77,14 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         }
     }
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            reload()
-        }
-    }
+//    public override fun onStart() {
+//        super.onStart()
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        val currentUser = auth.currentUser
+//        if(currentUser != null){
+//            reload()
+//        }
+//    }
 
     private fun reload() {
         finish()

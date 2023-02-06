@@ -10,6 +10,7 @@ import com.example.qurantutor.databinding.ActivityLoginBinding
 import com.example.qurantutor.globalSingleton.Singleton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -53,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else {
-                Snackbar.make(binding.coordinator, "Error !! "+ task.exception + "\nIf you don't have an account yet then sign up.", Snackbar.LENGTH_LONG).setAction("Sign Up") {
+                Snackbar.make(binding.coordinator, "Error !! If you don't have an account yet then sign up.", Snackbar.LENGTH_LONG).setAction("Sign Up") {
                     startActivity(Intent(this, SignUpActivity::class.java))
                 }.show()
             }

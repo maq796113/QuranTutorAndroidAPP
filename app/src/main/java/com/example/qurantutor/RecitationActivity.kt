@@ -7,6 +7,9 @@ import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +48,7 @@ class RecitationActivity : AppCompatActivity() {
     private var uid: String = ""
     @Inject
     lateinit var singleton: Singleton
+    private lateinit var textViews: List<TextView>
 
 
     private val storageHelper = SimpleStorageHelper(this)
@@ -138,13 +142,125 @@ class RecitationActivity : AppCompatActivity() {
         binding = ActivityRecitationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        if (singleton.surahID == 1) {
-            binding.verse1.text = resources.getText(R.string.surah_fatiha_1)
-            binding.verse2.text = resources.getText(R.string.surah_fatiha_2)
-            binding.verse3.text = resources.getText(R.string.surah_fatiha_3)
-            binding.verse4.text = resources.getText(R.string.surah_fatiha_4)
-            binding.verse5.text = resources.getText(R.string.surah_fatiha_5)
-            binding.verse6.text = resources.getText(R.string.surah_fatiha_6)
+        Log.d("SurahID", singleton.surahID.toString())
+        var surahn: String = ""
+        when (singleton.surahID+1) {
+            1 -> {
+                makeTextViewsClean()
+                surahn = "Surah Fatihah"
+                binding.verse1.text = resources.getText(R.string.surah_fatiha_1)
+                binding.verse2.text = resources.getText(R.string.surah_fatiha_2)
+                binding.verse3.text = resources.getText(R.string.surah_fatiha_3)
+                binding.verse4.text = resources.getText(R.string.surah_fatiha_4)
+                binding.verse5.text = resources.getText(R.string.surah_fatiha_5)
+                binding.verse6.text = resources.getText(R.string.surah_fatiha_6)
+            }
+            94 -> {
+                makeTextViewsClean()
+                surahn = "Surah Ash-Sharh"
+                binding.verse1.text = resources.getText(R.string.surah_ash_sharh_1)
+                binding.verse2.text = resources.getText(R.string.surah_ash_sharh_2)
+                binding.verse3.text = resources.getText(R.string.surah_ash_sharh_3)
+                binding.verse4.text = resources.getText(R.string.surah_ash_sharh_4)
+                binding.verse5.text = resources.getText(R.string.surah_ash_sharh_5)
+                binding.verse6.text = resources.getText(R.string.surah_ash_sharh_6)
+                binding.verse7.text = resources.getText(R.string.surah_ash_sharh_7)
+                binding.verse8.text = resources.getText(R.string.surah_ash_sharh_8)
+            }
+            95 -> {
+                makeTextViewsClean()
+                surahn = "Surah At-Tin"
+                binding.verse1.text = resources.getText(R.string.surah_at_tin_1)
+                binding.verse2.text = resources.getText(R.string.surah_at_tin_2)
+                binding.verse3.text = resources.getText(R.string.surah_at_tin_3)
+                binding.verse4.text = resources.getText(R.string.surah_at_tin_4)
+                binding.verse5.text = resources.getText(R.string.surah_at_tin_5)
+                binding.verse6.text = resources.getText(R.string.surah_at_tin_6)
+                binding.verse7.text = resources.getText(R.string.surah_at_tin_7)
+                binding.verse8.text = resources.getText(R.string.surah_at_tin_8)
+            }
+            97 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Qadr"
+                binding.verse1.text = resources.getText(R.string.surah_al_qadr_1)
+                binding.verse2.text = resources.getText(R.string.surah_al_qadr_2)
+                binding.verse3.text = resources.getText(R.string.surah_al_qadr_3)
+                binding.verse4.text = resources.getText(R.string.surah_al_qadr_4)
+                binding.verse5.text = resources.getText(R.string.surah_al_qadr_5)
+            }
+            98 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Bayyinah"
+
+            }
+            99 -> {
+                makeTextViewsClean()
+                surahn = "Surah Az-Zalzalah"
+            }
+            102 -> {
+                makeTextViewsClean()
+                surahn = "Surah At-Takathur"
+            }
+            103 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-'Asr"
+            }
+            105 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Fil"
+            }
+            106 -> {
+                makeTextViewsClean()
+                surahn = "Surah Quraysh"
+            }
+            107 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Ma'un"
+            }
+            108 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Kawthar"
+            }
+            109 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Kafirun"
+            }
+            110 -> {
+                makeTextViewsClean()
+                surahn = "Surah An-Nasr"
+            }
+            111 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Massad"
+            }
+            112 -> {
+                surahn = "Surah Al-Ikhlas"
+                //default
+            }
+            113 -> {
+                makeTextViewsClean()
+                surahn = "Surah Al-Falaq"
+            }
+            114 -> {
+                makeTextViewsClean()
+                surahn = "Surah An-Nas"
+            }
+
+        }
+
+        setTitleActionbar(surahn)
+        var visible = true
+        binding.toggleVisibility.setOnClickListener {
+            if (visible) {
+                for (textView in textViews) {
+                    textView.visibility = View.INVISIBLE
+                }
+            } else {
+                for (textView in textViews) {
+                    textView.visibility = View.VISIBLE
+                }
+            }
+            visible = !visible
         }
         uid = UUID.randomUUID().toString()
         _fileName = "surahIkhlas-$uid.wav"
@@ -173,6 +289,19 @@ class RecitationActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun makeTextViewsClean() {
+        textViews = listOf(binding.verse1, binding.verse2, binding.verse3, binding.verse3, binding.verse4, binding.verse5, binding.verse6, binding.verse7, binding.verse8)
+        for (textView in textViews) {
+            textView.text = null
+        }
+    }
+
+    private fun setTitleActionbar(surahName: String) {
+        supportActionBar?.title =
+            String.format(resources.getString(R.string.recitation_mode), surahName)
+    }
+
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

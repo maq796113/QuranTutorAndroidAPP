@@ -10,6 +10,7 @@ import android.widget.RemoteViews
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.example.qurantutor.databinding.ActivityMainBinding
+import io.realm.kotlin.Realm
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashTime: Long = 3000
         super.onCreate(savedInstanceState)
+        io.realm.Realm.init(this)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
