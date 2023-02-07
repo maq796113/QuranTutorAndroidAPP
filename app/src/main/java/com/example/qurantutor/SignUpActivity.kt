@@ -98,7 +98,6 @@ class SignUpActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
-                    singleton.username = email
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                 } else {

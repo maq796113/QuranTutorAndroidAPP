@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                singleton.username = email
+                singleton.username = email.substringBefore("@")
                 val intent = Intent(this, DashboardActivity::class.java)
                 startActivity(intent)
             }

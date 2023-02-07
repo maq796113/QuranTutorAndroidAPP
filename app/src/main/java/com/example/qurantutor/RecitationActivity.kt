@@ -220,6 +220,10 @@ class RecitationActivity : AppCompatActivity() {
             108 -> {
                 makeTextViewsClean()
                 surahn = "Surah Al-Kawthar"
+                binding.verse1.text = resources.getText(R.string.surah_al_kawthar_1)
+                binding.verse2.text = resources.getText(R.string.surah_al_kawthar_2)
+                binding.verse3.text = resources.getText(R.string.surah_al_kawthar_3)
+
             }
             109 -> {
                 makeTextViewsClean()

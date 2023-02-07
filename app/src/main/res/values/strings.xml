@@ -109,9 +109,11 @@
     <string name="surah_al_maun_6"></string>
     <string name="surah_al_maun_7"></string>
 
-    <string name="surah_al_kawthar_1"></string>
-    <string name="surah_al_kawthar_2"></string>
-    <string name="surah_al_kawthar_3"></string>
+    <string name="surah_al_kawthar_1">إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ</string>
+    <string name="surah_al_kawthar_2">فَصَلِّ لِرَبِّكَ وَٱنْحَرْ</string>
+    <string name="surah_al_kawthar_3">إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ</string>
+
+
 
 
     <string name="surah_al_kafirun_1"></string>
@@ -153,7 +155,7 @@
     <string name="error">ERROR</string>
     <string name="wrongLang">"This Ain't Even Arabic"</string>
     <string name="error_505">ERROR 505</string>
-    <string name="bleu_score_text">%s%</string>
+    <string name="bleu_score_text">%s</string>
     <string name="welcome">Welcome %s</string>
     <string name="surah">Surah</string>
     <string name="gender">Gender</string>

@@ -31,7 +31,7 @@ class ResultActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[ResultActivityViewModel::class.java]
         val filename = intent.getStringExtra("fileName")
         Log.d("filename", filename.toString())
-        viewModel.getPost(filename!!, singleton.username, singleton.surahID)
+        viewModel.getPost(filename!!, singleton.username, singleton.surahID+1)
         viewModel.errorMssg
         lifecycleScope.launchWhenStarted {
             viewModel.observerStateFlow.collect {

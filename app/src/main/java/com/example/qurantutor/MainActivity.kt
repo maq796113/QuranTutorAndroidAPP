@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        val remoteViews = RemoteViews(packageName, R.layout.notification_layout)
-        val builder = NotificationCompat.Builder(this, "channel_id")
-            .setSmallIcon(R.drawable.vector_quran)
-            .setVibrate(longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400))
-            .setCustomContentView(remoteViews)
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(0, builder.build())
+//        val remoteViews = RemoteViews(packageName, R.layout.notification_layout)
+//        val builder = NotificationCompat.Builder(this, "channel_id")
+//            .setSmallIcon(R.drawable.vector_quran)
+//            .setVibrate(longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400))
+//            .setCustomContentView(remoteViews)
+//        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//        notificationManager.notify(0, builder.build())
         binding.progressBar.max = 1000
         val currentProgress = 950
         ObjectAnimator.ofInt(binding.progressBar, "progress", currentProgress)

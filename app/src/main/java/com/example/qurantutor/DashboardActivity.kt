@@ -8,7 +8,6 @@ import androidx.core.content.res.ResourcesCompat
 import com.example.qurantutor.databinding.ActivityDashboardBinding
 import com.example.qurantutor.globalSingleton.Singleton
 import com.example.qurantutor.mongodb.Auth
-import com.example.qurantutor.mongodb.Auth.user
 import dagger.hilt.android.AndroidEntryPoint
 import io.realm.kotlin.mongodb.Credentials
 
@@ -25,8 +24,8 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         val viewb = binding.root
         setContentView(viewb)
-        loginAsync(Auth.credentials)
-        binding.welcomeTXT.text = String.format(resources.getString(R.string.welcome), singleton.username.substringBefore("@"))
+//        loginAsync(Auth.credentials)
+        binding.welcomeTXT.text = String.format(resources.getString(R.string.welcome), singleton.username)
 
 
         if (!singleton.isMale) {
@@ -48,8 +47,7 @@ class DashboardActivity : AppCompatActivity() {
         Auth.app.login(credentials)
         val realmUser = Auth.app.currentUser
         val mongoClient = realmUser
-
-
+    }
 
 
 
