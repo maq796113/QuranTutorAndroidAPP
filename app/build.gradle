@@ -2,10 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'realm-android'
     id 'com.google.gms.google-services'
     id 'com.google.dagger.hilt.android'
-    id("io.realm.kotlin") version "1.6.0"
 }
 
 android {
@@ -48,8 +46,10 @@ android {
 
 
 dependencies {
-    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.1'
     def hilt_version = "2.44.2"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.0'
     implementation 'androidx.activity:activity-ktx:1.2.0-alpha05'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
@@ -62,7 +62,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
-    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation platform('com.google.firebase:firebase-bom:31.2.0')
     implementation 'com.google.firebase:firebase-storage-ktx'
     testImplementation 'junit:junit:4.13.2'
     implementation "androidx.cardview:cardview:1.0.0"
@@ -73,16 +73,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
     implementation "com.anggrayudi:storage:1.5.3"
+
     implementation "androidx.documentfile:documentfile:1.0.1"
-    implementation 'io.realm.kotlin:library-base:1.6.0'
-    implementation 'io.realm.kotlin:library-sync:1.6.0'
-    implementation 'io.realm:realm-android-library:10.13.0'
-    implementation 'com.getkeepsafe.relinker:relinker:1.4.5'
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
-    implementation 'io.realm:realm-annotations:10.13.2-transformer-api'
-    implementation 'org.mongodb:bson:4.8.2'
-    compileOnly("io.realm.kotlin:library-sync:1.6.0")
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 

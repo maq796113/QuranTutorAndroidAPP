@@ -6,32 +6,35 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qurantutor.R
-import com.example.qurantutor.mongodb.BaseRealmObject
+import com.example.qurantutor.data.Firestore
 
-class RecitersAdapter(private val profiles: List<BaseRealmObject>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+class RecitersAdapter(private val profiles: List<Firestore>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.name_text_view)
-        val ageTextView: TextView = itemView.findViewById(R.id.age_text_view)
-        val speciesTextView: TextView = itemView.findViewById(R.id.species_text_view)
+        private val timeTextView: TextView
+        private val surahTextView: TextView
+        private val scoreTextView: TextView
+        init {
+            timeTextView = itemView.findViewById(R.id.time)
+            surahTextView = itemView.findViewById(R.id.surah)
+            scoreTextView = itemView.findViewById(R.id.score)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_frog, parent, false)
+            .inflate(R.layout.list_layout, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val profile = profiles[position]
+        holder.itemView.findViewById<TextView>(R.id.time).text = profile.time.toString()
+        holder.itemView.findViewById<TextView>(R.id.surah).text = profile.surahID.toString()
+        holder.itemView.findViewById<TextView>(R.id.score).text = profile.bleu_score.toString()
     }
+
 
     override fun getItemCount(): Int = profiles.size
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val frog = profiles[position]
-        holder.nameTextView.text = frog.name
-        holder.ageTextView.text = frog.age.toString()
-        holder.speciesTextView.text = frog.species
-    }
 
 }
