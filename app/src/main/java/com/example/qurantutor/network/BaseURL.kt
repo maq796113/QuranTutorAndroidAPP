@@ -10,5 +10,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object BaseURL {
     @Provides
-    fun providesModelbaseUrl() = "http://4.193.97.134:8080/"
+    fun providesModelbaseUrl() = "http://34.150.28.35/:8080/"
 }
