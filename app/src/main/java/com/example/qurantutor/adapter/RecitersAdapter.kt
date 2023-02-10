@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qurantutor.R
-import com.example.qurantutor.data.Firestore
+import com.example.qurantutor.data.ReciterProfile
 
 
-class RecitersAdapter(private val profiles: List<Firestore>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecitersAdapter(private val profiles: List<ReciterProfile>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val timeTextView: TextView
         private val surahTextView: TextView
@@ -36,5 +36,4 @@ class RecitersAdapter(private val profiles: List<Firestore>) : RecyclerView.Adap
 
 
     override fun getItemCount(): Int = profiles.size
-
 }

@@ -45,6 +45,14 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+//    public override fun onStart() {
+//        super.onStart()
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        val currentUser = auth.currentUser
+//        if(currentUser != null){
+//            recreate()
+//        }
+//    }
 
     private fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->

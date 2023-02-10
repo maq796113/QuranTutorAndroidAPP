@@ -252,13 +252,14 @@ class RecitationActivity : AppCompatActivity() {
 
         }
 
-        setTitleActionbar(surahn)
+        setTitleActionbar1(surahn)
         var visible = true
         binding.toggleVisibility.setOnClickListener {
             if (visible) {
                 for (textView in textViews) {
                     textView.visibility = View.INVISIBLE
                 }
+                setTitleActionbar2(surahn)
             } else {
                 for (textView in textViews) {
                     textView.visibility = View.VISIBLE
@@ -267,7 +268,7 @@ class RecitationActivity : AppCompatActivity() {
             visible = !visible
         }
         uid = UUID.randomUUID().toString()
-        _fileName = "surahIkhlas-$uid.wav"
+        _fileName = "recitationFile-$uid.wav"
         createAudioFolder()
         ActivityCompat.requestPermissions(this, permissionsToRecord, REQUEST_RECORD_AUDIO_PERMISSION)
         var mStartRecording = true
@@ -301,9 +302,13 @@ class RecitationActivity : AppCompatActivity() {
         }
     }
 
-    private fun setTitleActionbar(surahName: String) {
+    private fun setTitleActionbar1(surahName: String) {
         supportActionBar?.title =
             String.format(resources.getString(R.string.recitation_mode), surahName)
+    }
+    private fun setTitleActionbar2(surahName: String) {
+        supportActionBar?.title =
+            String.format(resources.getString(R.string.hafiz_mode), surahName)
     }
 
     @Deprecated("Deprecated in Java")

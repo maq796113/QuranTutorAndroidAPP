@@ -1,7 +1,11 @@
 package com.example.qurantutor
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +14,7 @@ import com.example.qurantutor.databinding.ActivityResultBinding
 import com.example.qurantutor.globalSingleton.Singleton
 import com.example.qurantutor.util.ApiState
 import com.example.qurantutor.viewmodel.ResultActivityViewModel
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -71,15 +76,34 @@ class ResultActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.action_bar, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.home -> {
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
 
+                true
+            }
+            R.id.retry -> {
+                val intent = Intent(this, RecitationActivity::class.java)
+                startActivity(intent)
 
-//        val filePath = intent.getStringExtra("filePath")
-//        val file = File(filePath!!)
-//        val deleted = file.delete()
-//        if (!deleted) {
-//            Toast.makeText(this, "App was unable to delete the audio file automatically", Toast.LENGTH_SHORT).show()
-//        }
-
+                true
+            }
+            R.id.logout -> {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
 

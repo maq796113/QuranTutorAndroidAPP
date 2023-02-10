@@ -16,6 +16,11 @@
     <string name="results">Results</string>
     <string name="retypePassword">Retype Password</string>
     <string name="recitation_mode">Recitation Mode: %s</string>
+    <string name="hafiz_mode">Hafiz Mode: %s</string>
+    <string name="retry">Retry</string>
+    <string name="home">Home</string>
+    <string name="logout">Sign Out</string>
+
 
 
     <string name="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمٌِ</string>
