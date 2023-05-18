@@ -28,3 +28,5 @@ After installing the application on your Android device, you can launch it and s
 # Contributions
 
 Contributions to this project are welcome. If you find any bugs or issues with the application, please open an issue on this repository. If you would like to contribute code or new features, please submit a pull request.
+
+demo link: https://drive.google.com/file/d/1Mauq_gzlOhOngXP4slFUW0mKQbzbp_h4/view?usp=sharing
