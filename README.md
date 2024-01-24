@@ -31,9 +31,11 @@ After installing the application on your Android device, you can launch it and s
 
 Contributions to this project are welcome. If you find any bugs or issues with the application, please open an issue on this repository. If you would like to contribute code or new features, please submit a pull request.
 
-![FYP-Recovered](https://github.com/maq796113/QuranTutorAndroidAPP/assets/67544354/44badeaa-7d42-4fa4-8bba-3b7a22f444e1)
-
 demo link: https://drive.google.com/file/d/1Mauq_gzlOhOngXP4slFUW0mKQbzbp_h4/view?usp=sharing
 
 documentation:
 https://docs.google.com/document/d/1aJYN4bakCy691-nzqqhSR0DlL0uHx-ss/edit?usp=sharing&ouid=102077898239243443869&rtpof=true&sd=true
+
+
+
+![FYP-Recovered](https://github.com/maq796113/QuranTutorAndroidAPP/assets/67544354/44badeaa-7d42-4fa4-8bba-3b7a22f444e1)
