@@ -21,7 +21,7 @@ To install this application on your Android device, follow these steps:
 4.  Click on the Run button in Android Studio and select your device from the list of available devices
 
 Alternatively, you can download the APK file from the releases section and install it directly on your Android device.
-*If you find this repository is empty, you can ask me for the app on my email, maq796113@gmail.com
+*If you find this repository empty, you can ask me for the app on my email, maq796113@gmail.com
 
 # Usage
 
