@@ -14,6 +14,7 @@ This is an Android mobile application that helps reciters of the Holy Quran trac
 
 To install this application on your Android device, follow these steps:
 
+
 1.  Clone this repository
 2.  Open the project in Android Studio
 3.  Connect your Android device to your computer via USB
@@ -29,6 +30,8 @@ After installing the application on your Android device, you can launch it and s
 # Contributions
 
 Contributions to this project are welcome. If you find any bugs or issues with the application, please open an issue on this repository. If you would like to contribute code or new features, please submit a pull request.
+
+![FYP-Recovered](https://github.com/maq796113/QuranTutorAndroidAPP/assets/67544354/44badeaa-7d42-4fa4-8bba-3b7a22f444e1)
 
 demo link: https://drive.google.com/file/d/1Mauq_gzlOhOngXP4slFUW0mKQbzbp_h4/view?usp=sharing
 
